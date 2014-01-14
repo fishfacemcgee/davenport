@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Diagnostics;
 
 namespace DeskApi
 {
-    public class Class1
+    public class DeskHandler
     {
+        public DeskHandler()
+        {
+            Debug.WriteLine("Hello World");
+        }
     }
 }
