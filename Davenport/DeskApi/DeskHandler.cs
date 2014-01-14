@@ -10,7 +10,6 @@ namespace DeskApi
 {
     public class DeskHandler
     {
-
         private const String ENDPOINT = "/api/v2/";
         private const String PROTOCOL = "https://";
         public String BaseUrl { get; private set; }
