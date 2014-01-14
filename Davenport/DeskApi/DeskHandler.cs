@@ -13,10 +13,12 @@ namespace DeskApi
 
         private const String ENDPOINT = "/api/v2/";
         private const String PROTOCOL = "https://";
+        public String BaseUrl { get; private set; }
 
-        public DeskHandler()
+        public DeskHandler(String baseUrl = "")
         {
-            Debug.WriteLine(PROTOCOL + "notarealurl.desk.com" + ENDPOINT);
+            BaseUrl = baseUrl;
+            Debug.WriteLine(PROTOCOL + BaseUrl + ENDPOINT);
         }
 
         public void getCases()
