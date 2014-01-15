@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.IO.Compression;
 using System.Diagnostics;
 
 namespace DeskApi
@@ -32,14 +34,16 @@ namespace DeskApi
          *  429 Too Many Requests       Rate Limit Reached
          *  501 Not Implemented         Data Type not Implemented
          */
-        private const String ENDPOINT = "/api/v2/";
-        private const String PROTOCOL = "https://";
+        private const String _ENDPOINT = "/api/v2/";
+        private const String _PROTOCOL = "https://";
+        public String HostName { get; private set; }
         public String BaseUrl { get; private set; }
 
-        public DeskHandler(String baseUrl = "")
+        public DeskHandler(String hostName = "")
         {
-            BaseUrl = baseUrl;
-            Debug.WriteLine(PROTOCOL + BaseUrl + ENDPOINT);
+            HostName = hostName;
+            BaseUrl = _PROTOCOL + HostName + _ENDPOINT;
+            Debug.WriteLine(BaseUrl);
         }
 
         public void getCases()
@@ -85,6 +89,32 @@ namespace DeskApi
              * or a JSON string containing the data already prepared
              * 
              */
+        }
+
+        private void apiRequest()
+        {
+            var handler = new HttpClientHandler();
+            if (handler.SupportsAutomaticDecompression)
+            {
+                handler.AutomaticDecompression = System.Net.DecompressionMethods.Deflate | System.Net.DecompressionMethods.GZip;
+            }
+
+            var client = new HttpClient(handler);
+            HttpRequestMessage request = getDeskRequestMessage();
+            
+        }
+
+        private HttpRequestMessage getDeskRequestMessage()
+        {
+            HttpRequestMessage message = new HttpRequestMessage();
+
+            message.Headers = new HttpRequestHeaders();
+            message.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            message.Headers.AcceptCharset.Add(new StringWithQualityHeaderValue("utf-8"));
+
+            message.Content.Headers.ContentType.MediaType = "application/json";
+
+            return message;
         }
     }
 }
