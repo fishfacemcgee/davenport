@@ -40,6 +40,7 @@
     <Compile Include="DeskHandler.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Case.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
