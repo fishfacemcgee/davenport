@@ -6,24 +6,15 @@ using System.Threading.Tasks;
 
 namespace DeskApi.Models
 {
-    class Case
+    class Case : BaseModel
     {
-        int                                 Id { get; private set; }
-        string                              External_Id { get; private set; }
         string                              Blurb { get; private set; }
         int                                 Priority { get; private set; }
         string                              Description { get; private set; }
         List<string>                        Labels { get; private set; }
         string                              Language { get; private set; }
-        // TODO: Investigate necessity of creating Custom Field class
-        List<Dictionary<string, string>>    Custom_Fields { get; private set; }
-        // TODO: Investigate necessity of creating Links class(es)
-        List<Dictionary<string, string>>    Links { get; private set; }
         // Date fields (need to check if JSON.NET can safely convert into .NET-friendly date values
-        string                              Created_At { get; private set; }
-        string                              Updated_At { get; private set; }
         string                              Received_At { get; private set; }
-        string                              Locked_Until { get; private set; }
         string                              First_Opened_At { get; private set; }
         string                              Opened_At { get; private set; }
         string                              First_Resolved_At { get; private set; }
