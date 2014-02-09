@@ -41,6 +41,11 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Case.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Messages\BaseMessage.cs" />
+    <Compile Include="Models\Messages\Community.cs" />
+    <Compile Include="Models\Messages\Email.cs" />
+    <Compile Include="Models\Messages\Facebook.cs" />
+    <Compile Include="Models\Messages\Tweet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
